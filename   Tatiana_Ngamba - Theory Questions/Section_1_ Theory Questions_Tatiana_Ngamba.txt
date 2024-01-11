@@ -1,0 +1,178 @@
+1.1 What does SDLC stand for? 1 mark
+SDLC is an abbreviation that stands for:
+-Software
+-Development
+-Life
+-Cycle
+-----------------------------------------------------------------------------------------------------------------
+
+1.2 What exception is thrown when you divide a number by 0? 1 mark
+- ZeroDivisionError
+
+-----------------------------------------------------------------------------------------------------------------
+
+1.3 What is the git command that moves code from the local repository to the remote repository? 1 mark
+The main command to move code from the local repository to the remote repository is:
+- Git Push
+
+
+-----------------------------------------------------------------------------------------------------------------
+1.4 What does NULL represent in a database? 1 mark
+- In a SQL database, when a data field or column contains 'NULL' it represents the lack of a value or an unknown value.
+
+
+-----------------------------------------------------------------------------------------------------------------
+1.5 Name 2 responsibilities of the Scrum Master 2 marks
+- Standups: Lead the daily scrum or standups as necessary.
+- Sprint reviews: Attend the meeting, provide input, and take notes/actions.
+
+
+-----------------------------------------------------------------------------------------------------------------
+1.6 Name 2 debugging methods, and when you would use them. 4 marks
+Debugging is the process of locating and fixing errors in a Python code.
+
+- Print statements: Print statements are useful for verifying your reasoning, testing your logic,
+                    and tracking the course of your code's execution.
+
+- Assertions: You utilise assertions in your code to support your assumptions.Assertions can be used to verify
+              if specific requirements are met at specific programmatic points.
+              When an assertion fails that signals a bug in your code.
+
+-----------------------------------------------------------------------------------------------------------------
+1.7 Looking at the following code, describe a case where this function would throw an error when called.
+    Describe this case and talk about what exception handling you’ll need. 5 marks
+
+def can_pay(price, cash_given):
+    if cash_given >= price:
+        return True
+    else:
+        return False
+ERROR:
+#1. Calling the function with two parameters values - "string" & integer
+results = can_pay("10 pounds", 200)
+results = can_pay(300, "£400 pounds")
+print(results)
+-* an example case would be to call the function with a string input instead of two integer value.
+-* this would throw a "TypeError: '>=' not supported between instances of 'int' and 'str'"
+-* because calculation between an integer and a string is not supported in python.
+-* hence why it is important to use two integers values when calling the function.
+
+EXCEPTION HANDLING:
+-* I would raise a 'ValueError' to handle and invalid input by the user.
+-* I would ensure that floats data types can be used for this calculation when inserted.
+-*here is how I would raise the exception use the code given by CFG
+
+def can_pay(price, cash_given):
+    try:
+        price = float(price)
+        cash_given = float(cash_given)
+    except ValueError:
+        return "Errors!!! you have entered and invalid input, enter numeric values"
+
+    if cash_given >= price:
+        return True
+    else:
+        return False
+
+
+results = can_pay(200, 481.50)
+print(results)
+
+-----------------------------------------------------------------------------------------------------------------
+1.8 What is git branching? Explain how it is used in Git. 6 marks
+- git branching is an extremely important feature in the Git version control system.
+- git branching allows developers to make changes to their codes when building a new product for example.
+
+* Create a New Branch - We can create a new branch by using the "git branch" command followed by the branch name via Terminal or
+"+ New branch" and then insert the branch name via Pycharm.
+
+* Checking Out of the Branch - To switch between from your main branch and the new branch for example, we can use the "git checkout"
+command via Terminal or by clicking on your main branch then "Checkout" via Pycharm.
+* Give the branch a 'Name'
+
+
+- How is git branching used in Git:
+** Isolate Development: When working as a team, developers can create branches to work on different aspects of a project at the same time to avoid bugs or issues
+if the code is already in a live environment.
+
+** New Feature Implementation: When working for a company, developers can create new branches to implement new development features or even fix bugs.
+This is a great way to track any project changes for future reference.
+
+** Version Changes: This allows developers to create branches as way to have different version of a product that is in live production.
+This is a great wat to also trace issues when the new version of the code has issues.
+
+-----------------------------------------------------------------------------------------------------------------
+1.9 Design a restaurant ordering system. You do not need to write code, but describe a high-level approach: 10 marks
+a. Draw a list of key requirements
+b. What are your main considerations and problems?
+c. What components or tools would you potentially use?
+-----------------------------------------------------
+a. Draw a list of key requirements
+1.* RESTAURANT MENU MANAGEMENT - STORING ALL AVAILABLE ITEMS & THEIR PRICES VIA SQL DATABASE & NEW AVAILABLE OPTIONS
+
+2.* PROCESSING ORDERS - PROCESS CUSTOMERS ORDERS, CALCULATE ORDERS COSTS AND ALLOW USERS TO SELECT ORDER TYPE (DELIVERY, COLLECTION)
+
+3.* CUSTOMERS ORDERS INTAKE DATA - STORING ORDERS DATA ON SQL BY USING PYTHON API INTEGRATION.
+
+4.* ORDERS CART -  ALLOW CUSTOMERS TO ADD/ REMOVE FOOD ITEMS AND PLACE AN ORDER(s).
+
+5.* USER AUTHENTICATION - ALLOW CUSTOMERS TO CREATE AN ACCOUNT TO PLACE ORDERS FROM THAT.
+
+6.* USER JOURNEY - MAPPING WHAT A USER JOURNEY SHOULD LOOK LIKE FROM START TO FINISH.
+--- create account: Login page and user authentication
+=.Username
+=.password
+--- Welcome page
+=.Menu available from dropdown options
+--- User Interface - Create orders/ place orders
+=. recommend similar items taste that would be a great addition to their orders
+=. adding, removing items
+=. cancel orders
+=. order history
+=. payment preferences
+----Items reviews/restaurants reviews
+=. using a five-star method to rate each item bought by the customer
+=. rate restaurant overall experience
+---- New adverts about new menu addition
+=. inform customers about the new items weeks in advance using marketing adds
+
+7.* UI - WEBSITE SHOULD EASY TO NAVIGATE AND CUSTOMERS SHOULD BE ABLE TO SEE VIEW ALL MENU ITEMS,
+ITEMS DETAILS & MODIFY THEIR ORDERS ETC...
+
+8.* PAYMENT SECURITY & DATA ENCRYPTION - TO PROTECT CUSTOMERS PERSONAL DATA & PAYMENT DETAILS
+
+-----------------------------------------------------
+b. What are your main considerations and problems?
+
+* Main Considerations/Questions:
+1.- Would the restaurant want the implement an in-store QR code order?
+which would allow physical orders to be paid directly from the table?
+Should customers have the option to select 'Dine_in' when paying for their orders?
+
+2.- Would the restaurant like the customers to receive a real life updates once their orders are confirmed
+(e.g: like Domino: order confirmed, in preparation,order will be delivered by, out for delivery or ready to be picked up?) or
+(e.g: like Just Eat: order confirmed and an estimate time is given?)
+
+3.- Would the restaurant want to allow users to pay using various payment methods such as credit cards (American express),
+Paypay, Klarna or providing cash once order is delivered?
+------
+* Problems
+1. Allergies - what happens is a customer is allergy to multiple things? how do we prevent this issue?
+2. Quality Assurance - who they be a system inplace to ensure that the correct order is going to the right customer?
+3. Order Issues/Cancellations - will customers be given a certain amount of time to cancel their orders?
+   what is something went wrong, and they receive the incorrect order what would be the process for this ?
+4. Cybersecurity attacks - with sensitive data and the high rise of cost of living. hw can we ensure that sensitive data is kept safe?
+5. Determine the maximum location between restaurant and customer - customer could live in a different city or really far from the restaurant.
+
+--------------------------------------------------------
+c. What components or tools would you potentially use?
+1.UI (User Interface) - Javascript, HTML & CSS
+2.SQL - for database management, store data and append customers orders data
+3.AWS - to store bigger data if needed in the future
+4.PYTHON - flask and relevant libraries
+5.API integration - including locations
+6.Authentication and payment authorisation services
+7.HTTPS - to secure sensitive data
+8.Online customer support help within certain time.
+
+
